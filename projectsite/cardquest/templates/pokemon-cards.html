@@ -14,7 +14,11 @@
           <th>Type</th>
           <th>Attack</th>
           <th>Description</th>
-          <th>Actions</th>
+          <th>Weakness</th>
+          <th>Number</th>
+          <th>Release</th>
+          <th>Evolution</th>
+          <th>Abilities</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +30,11 @@
             <td>{{ card.card_type }}</td>
             <td>{{ card.attack }}</td>
             <td>{{ card.description }}</td>
+            <td>{{ card.weakness }}</td>
+            <td>{{ card.card_number }}</td>
+            <td>{{ card.release_date }}</td>
+            <td>{{ card.evolution_stage }}</td>
+            <td>{{ card.abilities }}</td>
           </tr>
         {% empty %}
           <tr>
