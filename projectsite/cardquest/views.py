@@ -35,3 +35,13 @@ class CollectionList(ListView):
         context['collections'] = Collection.objects.select_related('trainer', 'card').all()
         return context
 
+# In the view
+def my_view(request):
+    pokemon_cards = PokemonCard.objects.all()
+
+    # Print image URLs for debugging
+    for card in pokemon_cards:
+        print(f"{card.name}: {card.image_url}")
+
+    return render(request, 'pokemon-cards.html', {'pokemon_cards': pokemon_cards})
+

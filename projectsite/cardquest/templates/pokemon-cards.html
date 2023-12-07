@@ -4,45 +4,64 @@
 {% block content %}
   <!-- POKEMON CARDS -->
   <section class="cards-container">
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Rarity</th>
-          <th>HP</th>
-          <th>Type</th>
-          <th>Attack</th>
-          <th>Description</th>
-          <th>Weakness</th>
-          <th>Number</th>
-          <th>Release</th>
-          <th>Evolution</th>
-          <th>Abilities</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for card in pokemon_cards %}
-          <tr>
-            <td>{{ card.name }}</td>
-            <td>{{ card.rarity }}</td>
-            <td>{{ card.hp }}</td>
-            <td>{{ card.card_type }}</td>
-            <td>{{ card.attack }}</td>
-            <td>{{ card.description }}</td>
-            <td>{{ card.weakness }}</td>
-            <td>{{ card.card_number }}</td>
-            <td>{{ card.release_date }}</td>
-            <td>{{ card.evolution_stage }}</td>
-            <td>{{ card.abilities }}</td>
-          </tr>
-        {% empty %}
-          <tr>
-            <td colspan="6" style="text-align: center;">
-              <p>No Pokemon Cards Found</p>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% for card in pokemon_cards %}
+      <div class="card-box">
+        <div class="card">
+          <div class="card-type" id="{{ card.card_type.lower }}">
+            <div class="card-image" id="{{ card.card_type.lower }}-img">
+              {% if card.image_url %}
+                <img src="{{ card.image_url }}" alt="{{ card.name }} Image">
+              {% else %}
+                No Image Available
+              {% endif %}
+            </div>
+            <div class="card-name">
+              <h2 class="sbs">{{ card.name }}</h2>
+              <h2 class="sbs" id="card-number">#{{ card.card_number|default:"N/A" }}</h2>
+              <hr />
+            </div>
+            <div class="card-rarity">
+              <h3 class="rarity">Rarity:</h3>
+              <h3 class="rarity" id="{{ card.rarity|lower }}-text">{{ card.rarity }}</h3>
+            </div>
+            <table class="card-stats">
+              <tbody>
+                <tr>
+                  <th>HP:</th>
+                  <td>{{ card.hp|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                  <th>Card Type:</th>
+                  <td>{{ card.card_type|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                  <th>Attack:</th>
+                  <td>{{ card.attack|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                  <th>Description:</th>
+                  <td>{{ card.description|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                  <th>Weakness:</th>
+                  <td>{{ card.weakness|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                  <th>Abilities:</th>
+                  <td>{{ card.abilities|default:"N/A" }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <hr />
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="card-box">
+        <div class="card">
+          <p>No Pokemon Cards Found</p>
+        </div>
+      </div>
+    {% endfor %}
   </section>
 {% endblock %}

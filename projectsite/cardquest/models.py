@@ -55,6 +55,7 @@ class PokemonCard(BaseModel):
     release_date = models.DateField(null=True, blank=True)
     evolution_stage = models.CharField(max_length=250, null=True, blank=True)
     abilities = models.CharField(max_length=250, null=True, blank=True)
+    image_url = models.URLField(max_length=250, null=True, blank=True)
     
 class Collection(BaseModel):
     card = models.ForeignKey(PokemonCard, blank=True, null=True, on_delete=models.CASCADE)
