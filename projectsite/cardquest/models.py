@@ -41,6 +41,7 @@ class PokemonCard(BaseModel):
         ('Ghost', 'Ghost'),
         ('Steel', 'Steel'),
         ('Fairy', 'Fairy'),
+        ('Pyschic','Pyschic'),
     )
     name = models.CharField(max_length=100, null=True, blank=True)
     rarity = models.CharField(
